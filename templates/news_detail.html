@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %} News Detail {% endblock %}
+{% block content %}
+{% load static %}
+
+
+       <!-- Breadcrumb Start -->
+        <div class="breadcrumb-wrap">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">News details</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Breadcrumb End -->
+
+
+        <!-- Single News Start-->
+        <div class="single-news">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="sn-img">
+                            <img src="{{news.news_image.url}}" width="900" height="600"  />
+                        </div>
+                        <div class="sn-content">
+                            <a class="sn-title" href="">{{news.title}}</a>
+                            <a class="sn-date" href=""><i class="far fa-clock"></i>{{news.formatted_date}}</a>
+                            <p>{{ news.content|linebreaks }}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="sidebar">
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Category</h2>
+                                <div class="category">
+                                    <ul class="fa-ul">
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="{{national}}">National</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="{{international}}">International</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="{{economics}}">Economics</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="{{politics}}">Politics</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="{{entertainment}}">Entertainment</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="{{tech}}">Technology</a></li>
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="{{trades}}">Trades</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Tags</h2>
+                                <div class="tags">
+                                    <a href="{{national}}">National</a>
+                                    <a href="{{international}}">International</a>
+                                    <a href="{{economics}}">Economics</a>
+                                    <a href="{{politics}}">Politics</a>
+                                    <a href="{{entertainment}}">Entertainment</a>
+                                    <a href="{{tech}}">Technology</a>
+                                    <a href="{{trades}}">Trades</a>
+                                    <a href="{{national}}">National</a>
+                                    <a href="{{international}}">International</a>
+                                    <a href="{{economics}}">Economics</a>
+                                    <a href="{{politics}}">Politics</a>
+                                    <a href="{{entertainment}}">Entertainment</a>
+                                    <a href="{{tech}}">Technology</a>
+                                    <a href="{{trades}}">Trades</a>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Exclusive Offer</h2>
+                                <div class="image">
+                                    <a href=""><img src={{main_ad.image.url}} width="470" height="280" alt="Image"></a>
+                                </div>
+                            </div>
+
+                            <div class="sidebar-widget">
+                                <h2><i class="fas fa-align-justify"></i>Sponsored Deals</h2>
+                                <div class="image">
+                                    <div class="row">
+                                        {%for ad in other_ads%}
+                                        <div class="col-sm-6">
+                                            <a href=""><img src={{ad.image.url}} width="235" height="155" alt="Image"></a>
+                                        </div>
+                                        {%endfor%}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Single News End-->
+
+
+{% endblock %}
