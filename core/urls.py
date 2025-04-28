@@ -17,5 +17,6 @@ urlpatterns = [
     path('latest/', views.latest_news, name ='latest_news'),
     path('popular/', views.popular_news, name ='popular_news'),
     path('subscribe/', views.subscribe, name='subscribe'),
+    path ('search/', views.search_view, name = 'search_view')
 
     ]

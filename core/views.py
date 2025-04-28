@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ContactForm, SubscribeForm
 from .models import Contact, News, NewsCategory, Advertisement, Subscribe
+from django.db.models import Q
 
 
 def home_page(request):
@@ -209,3 +210,15 @@ def subscribe(request):
 
     return redirect(request.META.get("HTTP_REFERER", "/"))
 
+
+def search_view(request):
+    key_data = request.GET.get('key', False)
+    if key_data:
+        posts = News.objects.filter(Q(title__icontains = key_data) | Q(content__icontains = key_data))
+
+        context = {
+            'page_name': 'Results',
+            'newses' : posts,
+
+        }
+        return render(request, 'news_page.html', context)

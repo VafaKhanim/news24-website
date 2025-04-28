@@ -14,18 +14,10 @@ class Contact(models.Model):
 
 class NewsCategory(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(max_length=100, unique=True, blank=True, null=True)
 
     def __str__(self):
         return self.name
 
-    def save(self):
-        if not self.slug:
-            self.slug = slugify(self.name)
-        super().save()
-
-    def __str__(self):
-        return self.name
 
 
 
